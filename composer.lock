@@ -7,53 +7,6 @@
     "content-hash": "347d67e86e1ec3fed89bbd8b3ed0508c",
     "packages": [
         {
-            "name": "almasaeed2010/adminlte",
-            "version": "v2.4.18",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
-                "reference": "e7ffa67a4649dc08d2018708a38604a6c0a02ab6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/e7ffa67a4649dc08d2018708a38604a6c0a02ab6",
-                "reference": "e7ffa67a4649dc08d2018708a38604a6c0a02ab6",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery": ">=1.9.0 <4.0.0"
-            },
-            "type": "template",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Abdullah Almsaeed",
-                    "email": "abdullah@almsaeedstudio.com"
-                }
-            ],
-            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 3",
-            "homepage": "https://adminlte.io/",
-            "keywords": [
-                "JS",
-                "admin",
-                "back-end",
-                "css",
-                "less",
-                "responsive",
-                "template",
-                "theme",
-                "web"
-            ],
-            "support": {
-                "issues": "https://github.com/almasaeed2010/AdminLTE/issues",
-                "source": "https://github.com/ColorlibHQ/AdminLTE/tree/v2.4.18"
-            },
-            "time": "2019-08-29T08:20:20+00:00"
-        },
-        {
             "name": "bower-asset/bootstrap",
             "version": "v3.4.1",
             "source": {
