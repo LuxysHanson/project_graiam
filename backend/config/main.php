@@ -35,6 +35,7 @@ return [
                 ],
             ],
         ],
+        'defaultRoute' => 'auth',
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -42,6 +43,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'auth/login' => 'site/login',
             ],
         ],
 

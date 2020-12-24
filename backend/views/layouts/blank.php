@@ -20,7 +20,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body class="blank">
-<?php $this->beginBody() ?>
+<?php $this->beginBody(); ?>
 
 <div class="container">
 
