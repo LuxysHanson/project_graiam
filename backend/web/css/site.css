@@ -137,3 +137,7 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.auth-form-group-custom.has-error .auti-custom-input-icon {
+    top: 38%;
+}
