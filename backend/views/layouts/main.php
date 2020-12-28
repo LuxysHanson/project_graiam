@@ -3,15 +3,10 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use backend\assets\AppAsset;
 use common\bundles\adminPanel\AdminAsset;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
-use common\widgets\Alert;
 
-AppAsset::register($this);
+AdminAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -27,7 +22,6 @@ AppAsset::register($this);
 <body data-sidebar="dark">
 <?php $this->beginBody() ?>
 
-<!-- Begin page -->
 <div id="layout-wrapper">
 
     <header id="page-topbar">
@@ -59,13 +53,6 @@ AppAsset::register($this);
                 <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
                     <i class="ri-menu-2-line align-middle"></i>
                 </button>
-
-                <form class="app-search d-none d-lg-block">
-                    <div class="position-relative">
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <span class="ri-search-line"></span>
-                    </div>
-                </form>
             </div>
 
             <div class="d-flex">
@@ -117,58 +104,6 @@ AppAsset::register($this);
 <!--                            <img src="assets/images/flags/russia.jpg" alt="user-image" class="mr-1" height="12"> -->
                             <span class="align-middle">Russian</span>
                         </a>
-                    </div>
-                </div>
-
-                <div class="dropdown d-none d-lg-inline-block ml-1">
-                    <button type="button" class="btn header-item noti-icon waves-effect"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="ri-apps-2-line"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <div class="px-lg-2">
-                            <div class="row no-gutters">
-                                <div class="col">
-                                    <a class="dropdown-icon-item" href="#">
-                                        <img src="<?= AdminAsset::img($this, '/images/brands/github.png') ?>" alt="Github">
-                                        <span>GitHub</span>
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <a class="dropdown-icon-item" href="#">
-                                        <img src="<?= AdminAsset::img($this, '/images/brands/bitbucket.png') ?>" alt="bitbucket">
-                                        <span>Bitbucket</span>
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <a class="dropdown-icon-item" href="#">
-                                        <img src="<?= AdminAsset::img($this, '/images/brands/dribbble.png') ?>" alt="dribbble">
-                                        <span>Dribbble</span>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="row no-gutters">
-                                <div class="col">
-                                    <a class="dropdown-icon-item" href="#">
-                                        <img src="<?= AdminAsset::img($this, '/images/brands/dropbox.png') ?>" alt="dropbox">
-                                        <span>Dropbox</span>
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <a class="dropdown-icon-item" href="#">
-                                        <img src="<?= AdminAsset::img($this, '/images/brands/mail_chimp.png') ?>" alt="mail_chimp">
-                                        <span>Mail Chimp</span>
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <a class="dropdown-icon-item" href="#">
-                                        <img src="<?= AdminAsset::img($this, '/images/brands/slack.png') ?>" alt="slack">
-                                        <span>Slack</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -274,7 +209,6 @@ AppAsset::register($this);
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <!-- item-->
                         <a class="dropdown-item" href="#"><i class="ri-user-line align-middle mr-1"></i> Profile</a>
                         <a class="dropdown-item" href="#"><i class="ri-wallet-2-line align-middle mr-1"></i> My Wallet</a>
                         <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right mt-1">11</span><i class="ri-settings-2-line align-middle mr-1"></i> Settings</a>
@@ -299,9 +233,7 @@ AppAsset::register($this);
 
         <div data-simplebar class="h-100">
 
-            <!--- Sidemenu -->
             <div id="sidebar-menu">
-                <!-- Left Menu Start -->
                 <ul class="metismenu list-unstyled" id="side-menu">
                     <li class="menu-title">Menu</li>
 
@@ -526,10 +458,8 @@ AppAsset::register($this);
 
                 </ul>
             </div>
-            <!-- Sidebar -->
         </div>
     </div>
-    <!-- Left Sidebar End -->
 
     <!-- ============================================================== -->
     <!-- Start right Content here -->
@@ -539,7 +469,6 @@ AppAsset::register($this);
         <div class="page-content">
             <div class="container-fluid">
 
-                <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
@@ -560,10 +489,10 @@ AppAsset::register($this);
                     <?= $content ?>
                 </main>
 
-            </div> <!-- container-fluid -->
+            </div>
         </div>
-        <!-- End Page-content -->
 
+        <?php /*
         <footer class="footer">
             <div class="container-fluid">
                 <div class="row">
@@ -578,13 +507,11 @@ AppAsset::register($this);
                 </div>
             </div>
         </footer>
+ */ ?>
     </div>
-    <!-- end main content-->
 
 </div>
-<!-- END layout-wrapper -->
 
-<!-- Right Sidebar -->
 <div class="right-bar">
     <div data-simplebar class="h-100">
         <div class="rightbar-title px-3 py-4">
@@ -594,7 +521,6 @@ AppAsset::register($this);
             <h5 class="m-0">Settings</h5>
         </div>
 
-        <!-- Settings -->
         <hr class="mt-0" />
         <h6 class="text-center mb-0">Choose Layouts</h6>
 
@@ -626,11 +552,9 @@ AppAsset::register($this);
 
         </div>
 
-    </div> <!-- end slimscroll-menu-->
+    </div>
 </div>
-<!-- /Right-bar -->
 
-<!-- Right bar overlay-->
 <div class="rightbar-overlay"></div>
 
 <?php /*

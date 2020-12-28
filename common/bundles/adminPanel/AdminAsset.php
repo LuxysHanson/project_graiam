@@ -14,6 +14,7 @@ class AdminAsset extends AssetBundle
     public $css = [
 //        'libs/metismenu/metis-menu.min.css',
 //        'libs/node-waves/waves.min.css',
+        'libs/admin-resources/jquery-jvectormap.min.css',
         'styles/bootstrap.min.css',
         'styles/icons.min.css',
         'styles/app.min.css'
@@ -21,11 +22,13 @@ class AdminAsset extends AssetBundle
     public $js = [
         'scripts/bootstrap.bundle.min.js',
         'libs/metismenu/metis-menu.min.js',
+        'scripts/simplebar.min.js',
         'libs/node-waves/waves.min.js',
         'libs/admin-resources/jquery-jvectormap.min.js',
         'scripts/app.min.js',
     ];
     public $depends = [
+        'yii\web\YiiAsset'
     ];
 
     /**
