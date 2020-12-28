@@ -4,10 +4,11 @@
 
 /* @var $content string */
 
-use backend\assets\AppAsset;
+use common\bundles\adminPanel\AdminAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
-AppAsset::register($this);
+AdminAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -23,9 +24,12 @@ AppAsset::register($this);
 <body class="auth-body-bg">
 <?php $this->beginBody(); ?>
 
-<div class="home-btn d-none d-sm-block">
-    <a href="#"><i class="mdi mdi-home-variant h2 text-white"></i></a>
-</div>
+<?php if (Yii::$app->user->can("admin")) : ?>
+    <div class="home-btn d-none d-sm-block">
+        <a href="<?= Url::to(['/site/index']) ?>"><i class="mdi mdi-home-variant h2 text-white"></i></a>
+    </div>
+<?php endif; ?>
+
 <div>
     <div class="container-fluid p-0">
         <div class="row no-gutters">

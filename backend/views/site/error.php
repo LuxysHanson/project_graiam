@@ -6,11 +6,11 @@
 /* @var $exception Exception */
 
 use common\bundles\adminPanel\AdminAsset;
-use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->title = $name;
 ?>
+
 <div class="site-error">
 
     <div class="my-5 pt-5">
@@ -21,13 +21,15 @@ $this->title = $name;
                         <h1 class="font-weight-bold text-error">
                             4
                             <span class="error-text">
-                                0 <img src="<?= AdminAsset::img($this, '/images/error-img.png') ?>" alt="" class="error-img" />
+                                0 <img src="<?= AdminAsset::img($this, '/images/error-img.png') ?>" alt="error-img"
+                                       class="error-img"/>
                             </span>
                             4
                         </h1>
                         <h3 class="text-uppercase"><?= Yii::t('app', "Страница не найдено") ?></h3>
                         <div class="mt-5 text-center">
-                            <a class="btn btn-primary waves-effect waves-light" href="<?= Url::to(['/site/index']) ?>">
+                            <a class="btn btn-primary waves-effect waves-light"
+                               href="<?= (!Yii::$app->user->isGuest) ? Url::to(['/site/index']) : Url::to(['/site/login']) ?>">
                                 <?= Yii::t('app', "Вернуться на главную") ?>
                             </a>
                         </div>
