@@ -17,7 +17,8 @@ class AdminAsset extends AssetBundle
         'libs/admin-resources/jquery-jvectormap.min.css',
         'styles/bootstrap.min.css',
         'styles/icons.min.css',
-        'styles/app.min.css'
+        'styles/app.min.css',
+        'styles/fixes.css'
     ];
     public $js = [
         'scripts/bootstrap.bundle.min.js',

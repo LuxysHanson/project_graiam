@@ -11,6 +11,8 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    'name' => 'Панель администратора',
+    'language' => 'ru',
     'modules' => [],
     'components' => [
         'request' => [
@@ -40,12 +42,14 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => [
+            'class' => 'codemix\localeurls\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
                 'auth/login' => 'site/login',
                 '' => 'site/index'
             ],
+            'languages' => ['ru', 'kk'],
         ],
 
     ],
