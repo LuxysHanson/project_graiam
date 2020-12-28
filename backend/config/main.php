@@ -44,6 +44,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'auth/login' => 'site/login',
+                '' => 'site/index'
             ],
         ],
 
