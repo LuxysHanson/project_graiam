@@ -5,6 +5,7 @@
 
 use common\bundles\adminPanel\AdminAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 AdminAsset::register($this);
 ?>
@@ -24,7 +25,7 @@ AdminAsset::register($this);
 
 <div id="layout-wrapper">
 
-    <?php if (Yii::$app->user->can("admin")) : ?>
+    <?php if (!Yii::$app->user->isGuest) : ?>
 
         <header id="page-topbar">
             <div class="navbar-header">
@@ -216,7 +217,10 @@ AdminAsset::register($this);
                             <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right mt-1">11</span><i class="ri-settings-2-line align-middle mr-1"></i> Settings</a>
                             <a class="dropdown-item" href="#"><i class="ri-lock-unlock-line align-middle mr-1"></i> Lock screen</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="#"><i class="ri-shut-down-line align-middle mr-1 text-danger"></i> Logout</a>
+                            <a class="dropdown-item text-danger" href="<?= Url::to(['/site/logout']) ?>" data-method="post">
+                                <i class="ri-shut-down-line align-middle mr-1 text-danger"></i>
+                                <?= Yii::t('app', "Выход") ?>
+                            </a>
                         </div>
                     </div>
 
@@ -467,12 +471,12 @@ AdminAsset::register($this);
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
-    <div class="<?= Yii::$app->user->can("admin") ? 'main-content' : '' ?>">
+    <div class="<?= !Yii::$app->user->isGuest ? 'main-content' : '' ?>">
 
         <div class="page-content">
             <div class="container-fluid">
 
-                <?php if (Yii::$app->user->can("admin")) : ?>
+                <?php if (!Yii::$app->user->isGuest) : ?>
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
