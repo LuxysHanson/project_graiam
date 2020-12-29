@@ -1,17 +1,27 @@
 <?php
 namespace backend\controllers;
 
+use common\components\services\UserService;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+use common\models\forms\LoginForm;
 
 /**
  * Site controller
  */
 class SiteController extends Controller
 {
+    /** @var UserService */
+    private $userService;
+
+    public function __construct($id, $module, UserService $userService, $config = [])
+    {
+        $this->userService = $userService;
+        parent::__construct($id, $module, $config);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -77,7 +87,7 @@ class SiteController extends Controller
         $this->layout = 'blank';
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        if ($model->load(Yii::$app->request->post()) && $this->userService->login($model)) {
             return $this->goBack();
         } else {
             $model->password = '';
