@@ -12,12 +12,10 @@ class AdminAsset extends AssetBundle
 {
     public $sourcePath = '@common/bundles/adminPanel/assets';
     public $css = [
-//        'libs/metismenu/metis-menu.min.css',
-//        'libs/node-waves/waves.min.css',
         'libs/admin-resources/jquery-jvectormap.min.css',
-        'styles/bootstrap.min.css',
+        ['styles/bootstrap.min.css', 'id' => 'bootstrap-style'],
         'styles/icons.min.css',
-        'styles/app.min.css',
+        ['styles/app.min.css', 'id' => 'app-style'],
         'styles/fixes.css'
     ];
     public $js = [

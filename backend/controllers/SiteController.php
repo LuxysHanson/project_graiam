@@ -3,6 +3,7 @@ namespace backend\controllers;
 
 use common\components\services\UserService;
 use Yii;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use common\models\forms\LoginForm;
@@ -77,7 +78,6 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
-        return $this->goHome();
+        return Yii::$app->response->redirect(Url::to(['/site/login']));
     }
 }
