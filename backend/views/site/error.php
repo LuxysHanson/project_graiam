@@ -30,7 +30,13 @@ $this->title = $name;
                         <div class="mt-5 text-center">
                             <a class="btn btn-primary waves-effect waves-light"
                                href="<?= (!Yii::$app->user->isGuest) ? Url::to(['/site/index']) : Url::to(['/site/login']) ?>">
-                                <?= Yii::t('app', "Вернуться на главную") ?>
+                                <?php
+                                if (!Yii::$app->user->isGuest) {
+                                    echo Yii::t('app', "Вернуться на главную");
+                                } else {
+                                    echo Yii::t('app', "Вернуться назад");
+                                }
+                                ?>
                             </a>
                         </div>
                     </div>

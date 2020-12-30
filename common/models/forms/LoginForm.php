@@ -5,6 +5,10 @@ use common\models\Users;
 use Yii;
 use yii\base\Model;
 
+/**
+ * Class LoginForm
+ * @package common\models\forms
+ */
 class LoginForm extends Model
 {
     public $username;
@@ -34,11 +38,10 @@ class LoginForm extends Model
     }
 
     /**
-     * Validates the password.
-     * This method serves as the inline validation for password.
+     * Проверяет пароль
      *
-     * @param string $attribute the attribute currently being validated
-     * @param array $params the additional name-value pairs given in the rule
+     * @param string $attribute
+     * @param array $params
      */
     public function validatePassword($attribute)
     {
@@ -51,7 +54,7 @@ class LoginForm extends Model
     }
 
     /**
-     * Finds user by [[username]]
+     * Находит пользователя по [[имя пользователя]]
      *
      * @return Users|null
      */
