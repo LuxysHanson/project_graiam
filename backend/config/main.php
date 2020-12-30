@@ -41,6 +41,9 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'authManager' => [
+            'class' => 'common\components\PhpManager',
+        ],
         'urlManager' => [
             'class' => 'codemix\localeurls\UrlManager',
             'enablePrettyUrl' => true,

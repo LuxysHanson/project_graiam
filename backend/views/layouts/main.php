@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use common\bundles\adminPanel\AdminAsset;
+use common\components\enums\UsersRoleEnum;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
