@@ -1,13 +1,10 @@
 <?php
-
-/* @var $this \yii\web\View */
-
-/* @var $content string */
+/** @var $this View */
+/** @var $content string */
 
 use common\bundles\adminPanel\AdminAsset;
-use common\components\enums\UsersRoleEnum;
 use yii\helpers\Html;
-use yii\helpers\Url;
+use yii\web\View;
 
 AdminAsset::register($this);
 ?>
