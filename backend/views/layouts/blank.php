@@ -5,6 +5,7 @@
 /* @var $content string */
 
 use common\bundles\adminPanel\AdminAsset;
+use common\components\enums\UsersRoleEnum;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -24,12 +25,6 @@ AdminAsset::register($this);
 <body class="auth-body-bg">
 <?php $this->beginBody(); ?>
 
-<?php if (Yii::$app->user->can("admin")) : ?>
-    <div class="home-btn d-none d-sm-block">
-        <a href="<?= Url::to(['/site/index']) ?>"><i class="mdi mdi-home-variant h2 text-white"></i></a>
-    </div>
-<?php endif; ?>
-
 <div>
     <div class="container-fluid p-0">
         <div class="row no-gutters">
@@ -37,7 +32,19 @@ AdminAsset::register($this);
                 <div class="authentication-page-content p-4 d-flex align-items-center min-vh-100">
                     <div class="w-100">
                         <div class="row justify-content-center">
-                            <?= $content ?>
+                            <div class="col-lg-9">
+                                <div>
+                                    <div class="text-center">
+                                        <div>
+                                            <a href="/" class="logo">
+                                                <!--                    <img src="--><?//= AdminAsset::img($this, '/images/logo-dark.png') ?><!--" height="20" alt="logo" />-->
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <?php /* Контентная часть */ ?>
+                                    <?= $content ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

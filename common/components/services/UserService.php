@@ -4,6 +4,7 @@ namespace common\components\services;
 
 use common\components\core\Service;
 use common\models\forms\LoginForm;
+use common\models\Users;
 use Yii;
 
 class UserService extends Service
@@ -21,5 +22,12 @@ class UserService extends Service
         }
 
         return false;
+    }
+
+    public function changeState(int $state)
+    {
+        $currentUser = Yii::$app->user->identity;
+        $currentUser->is_blocked = $state;
+        $currentUser->save();
     }
 }

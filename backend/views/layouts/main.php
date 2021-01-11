@@ -212,7 +212,7 @@ $theme = AdminAsset::register($this);
                                 <i class="ri-settings-2-line align-middle mr-1"></i>
                                 <?= Yii::t('app', "Настройки") ?>
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="<?= Url::to(['/site/blocked']) ?>">
                                 <i class="ri-lock-unlock-line align-middle mr-1"></i>
                                 <?= Yii::t('app', "Блокировка экрана") ?>
                             </a>
