@@ -3,6 +3,7 @@ namespace backend\controllers;
 
 use common\components\services\UserService;
 use Yii;
+use yii\filters\AccessControl;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -29,6 +30,20 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['logout', 'index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
