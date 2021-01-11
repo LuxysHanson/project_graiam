@@ -37,6 +37,11 @@ class LoginForm extends Model
         ];
     }
 
+    public function setUser($user)
+    {
+        $this->_user =$user;
+    }
+
     /**
      * Проверяет пароль
      *

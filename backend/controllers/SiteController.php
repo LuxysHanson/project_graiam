@@ -1,10 +1,10 @@
 <?php
 namespace backend\controllers;
 
+use common\components\enums\UsersStateEnum;
 use common\components\services\UserService;
 use Yii;
 use yii\filters\AccessControl;
-use yii\helpers\Url;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use common\models\forms\LoginForm;
@@ -38,7 +38,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'blocked', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -65,9 +65,40 @@ class SiteController extends Controller
         ];
     }
 
+    public function beforeAction($action)
+    {
+        if (Yii::$app->user->identity->is_blocked == UsersStateEnum::STATE_BLOCKED && $action->id != 'blocked') {
+            return $this->redirect(['/site/blocked']);
+        }
+        return parent::beforeAction($action);
+    }
+
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * Блокировка экрана
+     *
+     */
+    public function actionBlocked()
+    {
+        $this->layout = 'blank';
+
+        $model = new LoginForm();
+        $model->username = Yii::$app->user->identity->username;
+
+        if ($model->load(Yii::$app->request->post()) && $this->userService->login($model)) {
+            $this->userService->changeState(UsersStateEnum::STATE_UNBLOCKED);
+            return $this->goBack();
+        }
+
+        $this->userService->changeState(UsersStateEnum::STATE_BLOCKED);
+
+        return $this->render('blocked', [
+            'model' => $model
+        ]);
     }
 
     public function actionLogin()
@@ -93,6 +124,6 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-        return Yii::$app->response->redirect(Url::to(['/site/login']));
+        return $this->goHome();
     }
 }

@@ -20,7 +20,8 @@ use yii\web\IdentityInterface;
  * @property string $auth_key
  * @property integer $status
  * @property string $ts
- * @property array $role
+ * @property int $role
+ * @property int $is_blocked
  */
 class Users extends ActiveRecord implements IdentityInterface
 {
@@ -35,6 +36,7 @@ class Users extends ActiveRecord implements IdentityInterface
         return [
             [['username'], 'string', 'max'=>'255'],
             [['username', 'email'], 'unique'],
+            [['role', 'is_blocked'], 'integer'],
             ['status', 'default', 'value' => UsersEnum::STATUS_INACTIVE],
             ['status', 'in', 'range' => array_keys(UsersEnum::labels())],
             [$this->attributesSafe(), 'safe'],
@@ -44,7 +46,7 @@ class Users extends ActiveRecord implements IdentityInterface
     private function attributesSafe()
     {
         return [
-            'role',
+            'ts',
             'auth_key',
             'password_hash',
             'password_reset_token',
