@@ -3,6 +3,7 @@
 /** @var $content string */
 
 use common\bundles\adminPanel\AdminAsset;
+use common\components\enums\UsersRoleEnum;
 use yii\helpers\Html;
 use yii\web\View;
 
@@ -32,17 +33,17 @@ $theme = AdminAsset::register($this);
 
 <div id="layout-wrapper">
 
-    <?php if (!Yii::$app->user->isGuest) : ?>
+    <?php if (Yii::$app->user->can(UsersRoleEnum::ROLE_ADMIN)) : ?>
         <?= $this->render('blocks/_header') ?>
         <?= $this->render('blocks/_menu') ?>
     <?php endif; ?>
 
-    <div class="<?= !Yii::$app->user->isGuest ? 'main-content' : '' ?>">
+    <div class="<?= Yii::$app->user->can(UsersRoleEnum::ROLE_ADMIN) ? 'main-content' : '' ?>">
 
         <div class="page-content">
             <div class="container-fluid">
 
-                <?php if (!Yii::$app->user->isGuest) : ?>
+                <?php if (Yii::$app->user->can(UsersRoleEnum::ROLE_ADMIN)) : ?>
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">

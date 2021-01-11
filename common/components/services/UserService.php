@@ -4,7 +4,6 @@ namespace common\components\services;
 
 use common\components\core\Service;
 use common\models\forms\LoginForm;
-use common\models\Users;
 use Yii;
 
 class UserService extends Service

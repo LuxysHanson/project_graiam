@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\components\enums\UsersRoleEnum;
 use common\components\enums\UsersStateEnum;
 use common\components\services\UserService;
 use Yii;
@@ -34,14 +35,19 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
                         'allow' => true,
+                        'roles' => [UsersRoleEnum::ROLE_ADMIN],
                     ],
                     [
-                        'actions' => ['logout', 'blocked', 'index'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'actions' => ['login', 'error'],
+                        'roles' => ['@']
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'error'],
+                        'roles' => ['?']
+                    ]
                 ],
             ],
             'verbs' => [

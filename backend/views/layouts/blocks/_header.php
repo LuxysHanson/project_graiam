@@ -59,7 +59,7 @@ use yii\helpers\Url;
                                 <h6 class="m-0"> Notifications </h6>
                             </div>
                             <div class="col-auto">
-                                <a href="#!" class="small"> View All</a>
+                                <a href="#" class="small"> View All</a>
                             </div>
                         </div>
                     </div>
@@ -139,7 +139,10 @@ use yii\helpers\Url;
                     <img class="rounded-circle header-profile-user"
                          src="<?= AdminAsset::img($this, '/images/users/avatar-2.jpg') ?>"
                          alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ml-1">Kevin</span>
+                    <span class="d-none d-xl-inline-block ml-1">
+                        <?php  ?>
+                        <?= Yii::$app->user->identity->username ?>
+                    </span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">

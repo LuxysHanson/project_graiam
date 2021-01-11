@@ -6,9 +6,11 @@
 /* @var $exception Exception */
 
 use common\bundles\adminPanel\AdminAsset;
+use common\components\enums\UsersRoleEnum;
 use yii\helpers\Url;
 
 $this->title = $name;
+$exceptionCode = (string) $exception->statusCode;
 ?>
 
 <div class="site-error">
@@ -19,25 +21,20 @@ $this->title = $name;
                 <div class="col-lg-12">
                     <div class="text-center my-5">
                         <h1 class="font-weight-bold text-error">
-                            4
+                            <?= $exceptionCode{0} ?>
                             <span class="error-text">
                                 0 <img src="<?= AdminAsset::img($this, '/images/error-img.png') ?>" alt="error-img"
                                        class="error-img"/>
                             </span>
-                            4
+                            <?= $exceptionCode{2} ?>
                         </h1>
-                        <h3 class="text-uppercase"><?= Yii::t('app', "Страница не найдено") ?></h3>
+                        <h3 class="text-uppercase"><?= trim($message, ".") ?></h3>
                         <div class="mt-5 text-center">
-                            <a class="btn btn-primary waves-effect waves-light"
-                               href="<?= (!Yii::$app->user->isGuest) ? Url::to(['/site/index']) : Url::to(['/site/login']) ?>">
-                                <?php
-                                if (!Yii::$app->user->isGuest) {
-                                    echo Yii::t('app', "Вернуться на главную");
-                                } else {
-                                    echo Yii::t('app', "Вернуться назад");
-                                }
-                                ?>
-                            </a>
+                            <?php if (Yii::$app->user->can(UsersRoleEnum::ROLE_ADMIN)) : ?>
+                                <a class="btn btn-primary waves-effect waves-light" href="<?= Url::to(['/site/index']) ?>">
+                                    <?= Yii::t('app', "Вернуться на главную") ?>
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
