@@ -19,6 +19,13 @@ return [
             'csrfParam' => '_csrf-backend',
             'baseUrl' => '',
         ],
+        'assetManager' => [
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => [
+                    'css' => []
+                ]
+            ]
+        ],
         'user' => [
             'identityClass' => 'common\models\Users',
             'enableAutoLogin' => true,

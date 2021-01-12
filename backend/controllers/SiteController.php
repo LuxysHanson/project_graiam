@@ -1,12 +1,10 @@
 <?php
 namespace backend\controllers;
 
-use common\components\enums\UsersRoleEnum;
 use common\components\enums\UsersStateEnum;
 use common\components\services\UserService;
+use common\controllers\BaseController;
 use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use common\models\forms\LoginForm;
 
@@ -14,7 +12,7 @@ use common\models\forms\LoginForm;
  * Class SiteController
  * @package backend\controllers
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
     /** @var UserService */
     private $userService;
@@ -30,33 +28,15 @@ class SiteController extends Controller
      */
     public function behaviors()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => [UsersRoleEnum::ROLE_ADMIN],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['login', 'error'],
-                        'roles' => ['@']
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['login', 'error'],
-                        'roles' => ['?']
-                    ]
-                ],
-            ],
+        $parent = parent::behaviors();
+        return array_merge($parent, [
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
             ],
-        ];
+        ]);
     }
 
     /**
@@ -109,11 +89,11 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
+        $this->layout = 'blank';
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
-        $this->layout = 'blank';
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $this->userService->login($model)) {
