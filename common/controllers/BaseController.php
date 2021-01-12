@@ -3,8 +3,8 @@
 namespace common\controllers;
 
 use common\components\enums\UsersRoleEnum;
+use yii\base\Controller as Controller;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 
 /**
  * Class BaseController

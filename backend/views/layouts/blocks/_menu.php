@@ -1,6 +1,6 @@
 <?php
-use yii\bootstrap\Nav;
-?>
+use yii\helpers\Url;
+use yii\widgets\Menu; ?>
 
 <div class="vertical-menu">
     <div data-simplebar class="h-100">
@@ -8,26 +8,44 @@ use yii\bootstrap\Nav;
         <div id="sidebar-menu">
 
             <?php
-            $menuItems = [
-                ['label' => 'Menu', 'linkOptions' => ['class' => 'menu-title']],
-            ];
+            $template = '<a href="{url}" class="waves-effect">
+                        <i class="ri-dashboard-line"></i><span
+                            class="badge badge-pill badge-info float-right">3</span>
+                        <span>{label}</span>
+                    </a>';
+            $submenuTemplate = '<ul class="sub-menu" aria-expanded="false">{items}</ul>';
 
-            echo Nav::widget([
+            echo Menu::widget([
                 'options' => [
                     'id' => 'side-menu',
                     'class' => 'metismenu list-unstyled',
                 ],
-                'items' => $menuItems,
+                'items' => [
+                    ['label' => Yii::t('app', "Меню"), 'options' => ['class' => 'menu-title']],
+                    ['label' => Yii::t('app', "Панель администратора"), 'url' => Url::to(['/site/index']),
+                        'template' => $template
+                    ],
+                    [
+                        'label' => 'Dropdown',
+                        'url' => '#',
+                        'template' => $template,
+                        'submenuTemplate' => $submenuTemplate,
+                        'items' => [
+                            ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
+                            ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
+                        ],
+                    ],
+                ]
             ]);
             ?>
-
+<?php /*
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
 
                 <li>
                     <a href="index.html" class="waves-effect">
                         <i class="ri-dashboard-line"></i><span
-                            class="badge badge-pill badge-success float-right">3</span>
+                                class="badge badge-pill badge-success float-right">3</span>
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -245,7 +263,7 @@ use yii\bootstrap\Nav;
                 </li>
 
             </ul>
-
+*/ ?>
         </div>
     </div>
 </div>

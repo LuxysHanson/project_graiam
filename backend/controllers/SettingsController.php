@@ -2,9 +2,9 @@
 
 namespace backend\controllers;
 
-use common\controllers\BaseController;
+use common\controllers\Controller;
 
-class SettingsController extends BaseController
+class SettingsController extends Controller
 {
     public function actionIndex()
     {
