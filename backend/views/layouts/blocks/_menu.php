@@ -1,10 +1,26 @@
 <?php
+use yii\bootstrap\Nav;
 ?>
 
 <div class="vertical-menu">
     <div data-simplebar class="h-100">
 
         <div id="sidebar-menu">
+
+            <?php
+            $menuItems = [
+                ['label' => 'Menu', 'linkOptions' => ['class' => 'menu-title']],
+            ];
+
+            echo Nav::widget([
+                'options' => [
+                    'id' => 'side-menu',
+                    'class' => 'metismenu list-unstyled',
+                ],
+                'items' => $menuItems,
+            ]);
+            ?>
+
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
 
@@ -229,6 +245,7 @@
                 </li>
 
             </ul>
+
         </div>
     </div>
 </div>

@@ -2,7 +2,8 @@
 
 namespace common\controllers;
 
-use yii\filters\VerbFilter;
+use common\components\enums\UsersRoleEnum;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 
 /**
@@ -17,12 +18,25 @@ class BaseController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'logout' => ['post'],
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => [UsersRoleEnum::ROLE_ADMIN],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'error'],
+                        'roles' => ['@']
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'error'],
+                        'roles' => ['?']
+                    ]
                 ],
-            ],
+            ]
         ];
     }
 }

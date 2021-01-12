@@ -59,7 +59,7 @@ use yii\helpers\Url;
                                 <h6 class="m-0"> Notifications </h6>
                             </div>
                             <div class="col-auto">
-                                <a href="#!" class="small"> View All</a>
+                                <a href="#" class="small"> View All</a>
                             </div>
                         </div>
                     </div>
@@ -139,7 +139,10 @@ use yii\helpers\Url;
                     <img class="rounded-circle header-profile-user"
                          src="<?= AdminAsset::img($this, '/images/users/avatar-2.jpg') ?>"
                          alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ml-1">Kevin</span>
+                    <span class="d-none d-xl-inline-block ml-1">
+                        <?php  ?>
+                        <?= Yii::$app->user->identity->username ?>
+                    </span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
@@ -147,10 +150,10 @@ use yii\helpers\Url;
                         <i class="ri-user-line align-middle mr-1"></i>
                         <?= Yii::t('app', "Профиль") ?>
                     </a>
-                    <a class="dropdown-item d-block" href="#">
-                        <span class="badge badge-success float-right mt-1">11</span>
+                    <a class="dropdown-item d-block" href="<?= Url::to(['/settings/index']) ?>">
+<!--                        <span class="badge badge-success float-right mt-1">11</span>-->
                         <i class="ri-settings-2-line align-middle mr-1"></i>
-                        <?= Yii::t('app', "Настройки") ?>
+                        <?= Yii::t('app', "Настройки сайта") ?>
                     </a>
                     <a class="dropdown-item" href="<?= Url::to(['/site/blocked']) ?>">
                         <i class="ri-lock-unlock-line align-middle mr-1"></i>
