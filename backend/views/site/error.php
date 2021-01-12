@@ -31,8 +31,9 @@ $exceptionCode = (string) $exception->statusCode;
                         <h3 class="text-uppercase"><?= trim($message, ".") ?></h3>
                         <div class="mt-5 text-center">
                             <?php if (Yii::$app->user->can(UsersRoleEnum::ROLE_ADMIN)) : ?>
-                                <a class="btn btn-primary waves-effect waves-light" href="<?= Url::to(['/site/index']) ?>">
-                                    <?= Yii::t('app', "Вернуться на главную") ?>
+                                <a class="btn btn-primary waves-effect waves-light"
+                                   href="<?= (Yii::$app->request->referrer) ?: Url::to(['/site/index']) ?>">
+                                    <?= Yii::t('app', "Вернуться назад") ?>
                                 </a>
                             <?php endif; ?>
                         </div>
