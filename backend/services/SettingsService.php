@@ -7,7 +7,6 @@ use common\components\enums\UsersRoleEnum;
 
 class SettingsService extends Service
 {
-
     /**
      * @return mixed|null
      */
@@ -22,5 +21,4 @@ class SettingsService extends Service
         }
         return null;
     }
-
 }

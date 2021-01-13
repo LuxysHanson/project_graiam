@@ -2,7 +2,6 @@
 
 namespace backend\controllers;
 
-use backend\models\forms\SettingsForm;
 use backend\models\Settings;
 use backend\services\SettingsService;
 use common\controllers\Controller;
@@ -29,9 +28,9 @@ class SettingsController extends Controller
         return $this->renderForm('links');
     }
 
-    public function actionAdditional()
+    public function actionExtra()
     {
-        return $this->renderForm('additional');
+        return $this->renderForm('extra');
     }
 
     public function renderForm(string $template)

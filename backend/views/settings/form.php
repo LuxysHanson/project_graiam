@@ -25,8 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <i class="mdi mdi-email-outline mr-2"></i>
                     <?= Yii::t('app', "Социальные сети") ?>
                 </a>
-                <a href="<?= Url::to(['/settings/additional']) ?>"
-                   class="<?= $template == 'additional' ? 'active' : '' ?>">
+                <a href="<?= Url::to(['/settings/extra']) ?>"
+                   class="<?= $template == 'extra' ? 'active' : '' ?>">
                     <i class="mdi mdi-diamond-stone mr-2"></i>
                     <?= Yii::t('app', "Дополнительные") ?>
                 </a>
