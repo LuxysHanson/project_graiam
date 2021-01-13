@@ -3,8 +3,8 @@ use yii\widgets\Breadcrumbs; ?>
 
 <div class="row">
     <div class="col-12">
-        <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="mb-0"><?= $this->title ?></h4>
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0"><?= $this->title ?></h4>
             <div class="page-title-right">
                 <?= Breadcrumbs::widget([
                     'options' => [ 'class' => 'breadcrumb m-0'],

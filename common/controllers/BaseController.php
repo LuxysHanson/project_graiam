@@ -3,14 +3,14 @@
 namespace common\controllers;
 
 use common\components\enums\UsersRoleEnum;
-use yii\base\Controller as Controller;
 use yii\filters\AccessControl;
+use yii\web\Controller as ControllerAlias;
 
 /**
  * Class BaseController
  * @package common\controllers
  */
-class BaseController extends Controller
+class BaseController extends ControllerAlias
 {
     /**
      * {@inheritdoc}

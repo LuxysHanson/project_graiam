@@ -14,6 +14,7 @@ class m210112_075314_add_table_settings extends Migration
     {
         $this->createTable('settings', [
             'id' => $this->primaryKey(),
+            'user_id' => $this->integer()->notNull(),
             'name' => $this->string(),
             'excerpt' => $this->text(),
             'description' => $this->text(),

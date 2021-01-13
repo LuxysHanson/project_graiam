@@ -8,6 +8,7 @@ use Throwable;
 use Yii;
 use yii\base\Component;
 use yii\db\ActiveQuery;
+use yii\db\Query;
 use yii\db\StaleObjectException;
 use yii\web\NotFoundHttpException;
 
@@ -17,7 +18,7 @@ use yii\web\NotFoundHttpException;
  */
 abstract class Service extends Component implements ServiceInterface
 {
-    public function getModel() : ActiveRecord
+    public function getModel()
     {
         $modelClass = ClassHelper::getRelatedClass(get_called_class(), 'models', '');
         return new $modelClass;
@@ -59,6 +60,30 @@ abstract class Service extends Component implements ServiceInterface
         }
 
         return $model;
+    }
+
+    /**
+     * Возвращает одну запись
+     *
+     * @param array|callable $condition
+     * @return mixed
+     */
+    public function getOneByCondition($condition = null, Query $query = null)
+    {
+        if (empty($query)) {
+            $query = $this->find();
+        }
+        if (is_callable($condition)){
+            call_user_func($condition, $query);
+        }
+
+        if (is_array($condition)){
+            foreach ($condition as $name => $value){
+                $query->andWhere([$name => $value]);
+            }
+        }
+
+        return $query->one();
     }
 
     /**
