@@ -2,7 +2,7 @@
 namespace backend\controllers;
 
 use common\components\enums\UsersStateEnum;
-use common\components\services\UserService;
+use common\services\UsersService;
 use common\controllers\BaseController;
 use Yii;
 use yii\filters\VerbFilter;
@@ -14,10 +14,10 @@ use common\models\forms\LoginForm;
  */
 class SiteController extends BaseController
 {
-    /** @var UserService */
+    /** @var UsersService */
     private $userService;
 
-    public function __construct($id, $module, UserService $userService, $config = [])
+    public function __construct($id, $module, UsersService $userService, $config = [])
     {
         $this->userService = $userService;
         parent::__construct($id, $module, $config);

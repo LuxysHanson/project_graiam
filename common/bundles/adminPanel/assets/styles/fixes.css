@@ -1,3 +1,11 @@
-.form-group.has-error > .invalid-feedback {
+.form-group.has-error > .help-block {
     display: block;
+}
+
+.help-block {
+    display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #ff3d60;
 }

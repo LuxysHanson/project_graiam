@@ -1,12 +1,12 @@
 <?php
 
-namespace common\components\services;
+namespace common\services;
 
 use common\components\core\Service;
 use common\models\forms\LoginForm;
 use Yii;
 
-class UserService extends Service
+class UsersService extends Service
 {
     /**
      * Авторизация пользователя

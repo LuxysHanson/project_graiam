@@ -1,9 +1,12 @@
 <?php
 /** @var $model Settings */
+/** @var $template string */
+/** @var $_params_ string */
 
 use backend\models\Settings;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
+use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', "Настройки сайта");
 $this->params['breadcrumbs'][] = $this->title;
@@ -14,15 +17,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="email-leftbar card">
             <div class="mail-list">
-                <a href="<?= Url::to(['/settings/index']) ?>" class="active">
+                <a href="<?= Url::to(['/settings/index']) ?>" class="<?= $template == 'index' ? 'active' : '' ?>">
                     <i class="mdi mdi-star-outline mr-2"></i>
                     <?= Yii::t('app', "Основные") ?>
                 </a>
-                <a href="<?= Url::to(['/settings/links']) ?>">
+                <a href="<?= Url::to(['/settings/links']) ?>" class="<?= $template == 'links' ? 'active' : '' ?>">
                     <i class="mdi mdi-email-outline mr-2"></i>
                     <?= Yii::t('app', "Социальные сети") ?>
                 </a>
-                <a href="<?= Url::to(['/settings/additional']) ?>">
+                <a href="<?= Url::to(['/settings/additional']) ?>"
+                   class="<?= $template == 'additional' ? 'active' : '' ?>">
                     <i class="mdi mdi-diamond-stone mr-2"></i>
                     <?= Yii::t('app', "Дополнительные") ?>
                 </a>
@@ -33,20 +37,16 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card">
                 <div class="card-body">
 
-                    <h4 class="card-title mb-4"><?= Yii::t('app', "Основные настройки") ?></h4>
+                    <?php Pjax::begin(); ?>
 
-                    <?php $form = ActiveForm::begin(['id' => 'login-form', 'class' => 'form-horizontal']); ?>
+                    <?php $form = ActiveForm::begin([
+                        'id' => 'settings-form',
+                        'options' => ['data[pjax]' => true]
+                    ]); ?>
 
-<!--                    --><?//= $form->field($model, 'name')->textInput() ?>
-
-<!--                    --><?//= $form->field($model, 'description')->textInput() ?>
-
-                    <div class="form-group row">
-                        <label for="example-text-input" class="col-md-2 col-form-label">Text</label>
-                        <div class="col-md-10">
-                            <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
-                        </div>
-                    </div>
+                    <?= $this->render("include\_".$template, array_merge($_params_, [
+                        'form' => $form
+                    ])) ?>
 
                     <div class="row mt-4">
                         <div class="col-12 d-flex justify-content-end">
@@ -57,6 +57,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
 
                     <?php ActiveForm::end() ?>
+
+                    <?php Pjax::end() ?>
+
                 </div>
             </div>
         </div>
