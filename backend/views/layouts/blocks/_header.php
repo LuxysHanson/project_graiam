@@ -146,12 +146,11 @@ use yii\helpers\Url;
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="<?= Url::to(['/profile/index']) ?>">
                         <i class="ri-user-line align-middle mr-1"></i>
                         <?= Yii::t('app', "Профиль") ?>
                     </a>
                     <a class="dropdown-item d-block" href="<?= Url::to(['/settings/index']) ?>">
-<!--                        <span class="badge badge-success float-right mt-1">11</span>-->
                         <i class="ri-settings-2-line align-middle mr-1"></i>
                         <?= Yii::t('app', "Настройки сайта") ?>
                     </a>
