@@ -51,7 +51,7 @@ class SettingsController extends Controller
             }
         }
 
-        return $this->render("@backend/views/common/form", [
+        return $this->render("form", [
             'model' => $model,
             'template' => $template
         ]);
