@@ -2,10 +2,12 @@
 
 namespace backend\controllers;
 
+use backend\models\forms\ProfileForm;
 use backend\models\UsersProfile;
 use backend\services\UsersProfileService;
 use common\controllers\BaseController;
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * Class ProfileController
@@ -39,7 +41,7 @@ class ProfileController extends BaseController
 
     public function renderForm(string $template)
     {
-        $model = new UsersProfile();
+        $model = new ProfileForm();
         $condition = [
             'user_id' => Yii::$app->user->identity->id
         ];
@@ -51,7 +53,7 @@ class ProfileController extends BaseController
             return $this->redirect([$template]);
         }
 
-        return $this->render("@backend/views/common/form", [
+        return $this->render("form", [
             'model' => $model,
             'template' => $template
         ]);

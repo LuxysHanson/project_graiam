@@ -2,11 +2,13 @@
 /** @var $model mixed */
 /** @var $template string */
 /** @var $_params_ string */
+/** @var $options array */
 
 use yii\bootstrap\ActiveForm;
 use yii\widgets\Pjax;
 
 $modelClass = $model::tableName() != "settings" ? 'profile' : $model::tableName();
+$options = array_merge(['data[pjax]' => true], $options);
 ?>
 
 <div class="row">
@@ -24,7 +26,7 @@ $modelClass = $model::tableName() != "settings" ? 'profile' : $model::tableName(
 
                     <?php $form = ActiveForm::begin([
                         'id' => "{$template}-form",
-                        'options' => ['data[pjax]' => true]
+                        'options' => $options
                     ]); ?>
 
                     <?= $this->render("@backend/views/{$modelClass}/include/_".$template, array_merge($_params_, [
