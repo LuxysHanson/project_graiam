@@ -1,0 +1,33 @@
+.image-field-wrap .file-preview {
+    border: none;
+}
+
+.image-field-wrap .kv-file-content {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.image-field-wrap .file-thumbnail-footer {
+    display: none;
+}
+
+.image-field-wrap .file-drop-zone {
+    min-height: auto;
+    margin: 0;
+}
+
+.image-field-wrap .btn-file {
+    position: absolute;
+    bottom: 16px;
+    left: 9rem;
+}
+
+.image-field-wrap .fileinput-remove {
+    position: absolute;
+    bottom: 16px;
+    left: 5rem;
+}
+
+.image-field-wrap .file-default-preview {
+    padding: 12px;
+}

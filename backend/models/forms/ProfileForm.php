@@ -18,4 +18,11 @@ class ProfileForm extends Model
         ];
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'image' => \Yii::t('app', "Логотип администратора")
+        ];
+    }
+
 }
