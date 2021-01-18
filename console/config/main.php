@@ -37,5 +37,9 @@ return [
             ],
         ],
     ],
+    'assetManager' => [
+        'basePath' => '@web/assets',
+        'baseUrl' => '@web/assets',
+    ],
     'params' => $params,
 ];
