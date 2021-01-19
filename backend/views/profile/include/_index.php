@@ -4,7 +4,6 @@
 
 use backend\models\UsersProfile;
 use backend\widgets\EImageField\EImageField;
-use kartik\file\FileInput;
 use yii\bootstrap\ActiveForm;
 
 ?>
@@ -17,9 +16,9 @@ echo EImageField::widget([
     'form' => $form,
     'model' => $model,
     'options' => [
-        'id' => 'profile-form-image'
+        'id' => 'profile-form-image',
+        'size' => '150*150',
+        'format' => 'JPEG(JPG)/PNG'
     ]
 ]);
 ?>
-
-<i><?= Yii::t('app', "Рекомендуемый формат: JPEG(JPG)/PNG Рекомендуемый размер: 300x300") ?></i>

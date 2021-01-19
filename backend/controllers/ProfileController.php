@@ -3,7 +3,6 @@
 namespace backend\controllers;
 
 use backend\models\forms\ProfileForm;
-use backend\models\UsersProfile;
 use backend\services\UsersProfileService;
 use common\controllers\BaseController;
 use Yii;
@@ -46,11 +45,14 @@ class ProfileController extends BaseController
             'user_id' => Yii::$app->user->identity->id
         ];
         if ($profile = $this->profileService->getOneByCondition($condition)) {
-            $model = $profile;
+            $model->attributes = $profile->attributes;
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect([$template]);
+        if ($model->load(Yii::$app->request->post())) {
+            $image = UploadedFile::getInstance($model, 'image');
+            if ($model->imgUpload($image) && $model->save($profile)) {
+                return $this->redirect([$template]);
+            }
         }
 
         return $this->render("form", [

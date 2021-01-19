@@ -7,6 +7,10 @@
     height: auto !important;
 }
 
+.image-field-wrap .kv-file-content video {
+    width: 100% !important;
+}
+
 .image-field-wrap .file-thumbnail-footer {
     display: none;
 }
@@ -19,15 +23,19 @@
 .image-field-wrap .btn-file {
     position: absolute;
     bottom: 16px;
-    left: 9rem;
+    left: 56%;
 }
 
 .image-field-wrap .fileinput-remove {
     position: absolute;
     bottom: 16px;
-    left: 5rem;
+    left: 28%;
 }
 
 .image-field-wrap .file-default-preview {
     padding: 12px;
+}
+
+.image-field-wrap .file-default-preview img {
+    max-width: 100%;
 }

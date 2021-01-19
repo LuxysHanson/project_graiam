@@ -30,6 +30,20 @@ class UsersProfile extends ActiveRecord
         return "relations.user_profile";
     }
 
+    public function rules()
+    {
+        return [
+            [['image'], 'safe'],
+            [['user_id'], 'integer']
+        ];
+    }
+
+    public function beforeSave($insert)
+    {
+        $this->user_id = Yii::$app->user->identity->id;
+        return parent::beforeSave($insert);
+    }
+
     public function attributeLabels()
     {
         return [

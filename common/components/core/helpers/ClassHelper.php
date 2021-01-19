@@ -2,6 +2,10 @@
 
 namespace common\components\core\helpers;
 
+/**
+ * Class ClassHelper
+ * @package common\components\core\helpers
+ */
 class ClassHelper
 {
     public static function getTableName($class, $pluralize = true, $layer = 'repository')

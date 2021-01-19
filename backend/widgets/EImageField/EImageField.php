@@ -26,7 +26,7 @@ class EImageField extends FileUploaded
     ];
 
     protected $defaultData = [
-        'data-url' => '/images/default-avatar-male.png',
+        'data-default' => '/images/default-avatar-male.png',
         'accept' => 'image/*'
     ];
 
@@ -47,6 +47,9 @@ class EImageField extends FileUploaded
             $id = isset($this->options['id']) ? $this->options['id'] : null;
             if ($id && !isset($this->options['data-id'])) {
                 $this->options['data-id'] = $id;
+            }
+            if (!isset($this->defaultData['data-url'])) {
+                $this->options['data-url'] = isset($this->model->{$this->name}) ? $this->model->{$this->name} : '';
             }
             $this->options = array_merge($this->options, $this->defaultData);
         } else {
