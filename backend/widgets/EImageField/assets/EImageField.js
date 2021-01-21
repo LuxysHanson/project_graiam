@@ -7,7 +7,6 @@ $(function () {
         var imageUrl = input.data('url'),
             params = {
                 overwriteInitial: true,
-                maxFileSize: 1500,
                 showClose: false,
                 showCaption: false,
                 browseLabel: '',
@@ -22,6 +21,10 @@ $(function () {
                 defaultPreviewContent: '<img src="'+ input.data('default') +'" alt="default-avatar-img">',
                 layoutTemplates: {main2: '{preview} {remove} {browse}'}
             };
+
+        if (typeof imageUrl === "undefined") {
+            imageUrl = "";
+        }
 
         if (imageUrl !== "") {
             params.initialPreview = [
