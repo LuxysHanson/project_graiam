@@ -29,4 +29,9 @@ class ActiveRecord extends \yii\db\ActiveRecord
         $this->info = $jInfo;
     }
 
+    public function formFields()
+    {
+        return [];
+    }
+
 }
