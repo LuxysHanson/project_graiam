@@ -3,9 +3,10 @@
 namespace backend\models\forms;
 
 use backend\models\UsersProfile;
+use common\components\core\helpers\AttributeHelper;
 use common\components\core\helpers\ImageHelper;
+use common\components\Model;
 use Yii;
-use yii\base\Model;
 use yii\db\Exception;
 use yii\web\UploadedFile;
 
@@ -14,11 +15,14 @@ class ProfileForm extends Model
     public $image = null;
     public $password;
 
+    /* Временное хранение размер загружаемого фото */
+    protected $image_size;
+
     public function rules()
     {
         return [
-            [['image'], 'file', 'extensions' => ['jpeg', 'jpg', 'png'], 'maxSize' => 1024 * 1024 * 5],
-            [['image'], 'safe']
+            ['image', 'file', 'extensions' => ['jpeg', 'jpg', 'png']],
+            [['image'], 'required']
         ];
     }
 
@@ -37,11 +41,18 @@ class ProfileForm extends Model
     public function imgUpload($img)
     {
         if (!is_null($img)) {
+            $this->image_size = $img->size;
             $tempName = Yii::$app->security->generateRandomString().".{$img->extension}";
-            $this->image = '/uploads/profile/' . $tempName;
-            $fullPath = ImageHelper::getFullPathUploadedImage($this->image);
+            $tempImage = '/uploads/profile/' . $tempName;
+            $fullPath = ImageHelper::getFullPathUploadedImage($tempImage);
+
+            if ($this->photoUploadLimit()) {
+                $this->addError('image', Yii::t('app', "Размер загружаемого фото не должен превышать 1мб"));
+                return false;
+            }
 
             if ($img->saveAs($fullPath)) {
+                $this->image = $tempImage;
                 return true;
             }
         }
@@ -65,7 +76,7 @@ class ProfileForm extends Model
             $model = $user;
         }
         $this->deleteUnusedImage($this->image, $model->image);
-        $model->attributes = $this->attributes;
+        AttributeHelper::loadAttributes($model, $this->attributes);
         if (!$model->save()) {
             $transaction->rollBack();
             return false;
@@ -84,9 +95,19 @@ class ProfileForm extends Model
     protected function deleteUnusedImage(string $currentImage, string $oldImage): void
     {
         $fullPath = ImageHelper::getFullPathUploadedImage($oldImage);
-        if (!stristr($currentImage, $oldImage) && file_exists($fullPath)) {
+        if ($oldImage && !stristr($currentImage, $oldImage) && file_exists($fullPath)) {
             unlink($fullPath);
         }
+    }
+
+    /**
+     * Ограничение на размер загружаемого фото
+     *
+     * @return bool
+     */
+    protected function photoUploadLimit()
+    {
+        return $this->image_size > 1024*1024;
     }
 
 }

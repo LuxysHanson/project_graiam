@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\forms\ProfileForm;
 use backend\services\UsersProfileService;
+use common\components\core\helpers\AttributeHelper;
 use common\controllers\BaseController;
 use Yii;
 use yii\web\UploadedFile;
@@ -45,7 +46,7 @@ class ProfileController extends BaseController
             'user_id' => Yii::$app->user->identity->id
         ];
         if ($profile = $this->profileService->getOneByCondition($condition)) {
-            $model->attributes = $profile->attributes;
+            AttributeHelper::loadAttributes($model, $profile->attributes);
         }
 
         if ($model->load(Yii::$app->request->post())) {
