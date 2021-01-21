@@ -2,8 +2,6 @@
 
 namespace common\components\core\helpers;
 
-use backend\models\UsersProfile;
-
 /**
  * Class AttributeHelper
  * @package common\components\core\helpers
