@@ -17,7 +17,7 @@ class ProfileForm extends Model
     public function rules()
     {
         return [
-            ['image', 'file', 'extensions' => ['jpeg', 'jpg', 'png']],
+            [['image'], 'file', 'extensions' => ['jpeg', 'jpg', 'png'], 'maxSize' => 1024 * 1024 * 5],
             [['image'], 'safe']
         ];
     }
@@ -29,7 +29,12 @@ class ProfileForm extends Model
         ];
     }
 
-    public function imgUpload(UploadedFile $img)
+    /**
+     * @param UploadedFile|null $img
+     * @return bool
+     * @throws Exception
+     */
+    public function imgUpload($img)
     {
         if (!is_null($img)) {
             $tempName = Yii::$app->security->generateRandomString().".{$img->extension}";
@@ -40,6 +45,7 @@ class ProfileForm extends Model
                 return true;
             }
         }
+        Yii::$app->session->setFlash('error', "Ошибка при загрузке фото");
         return false;
     }
 

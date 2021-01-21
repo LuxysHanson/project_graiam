@@ -39,3 +39,7 @@
 .image-field-wrap .file-default-preview img {
     max-width: 100%;
 }
+
+.krajee-default.file-preview-frame {
+    width: calc(100% - 14px);
+}

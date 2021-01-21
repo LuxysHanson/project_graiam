@@ -4,6 +4,7 @@
 
 use common\bundles\adminPanel\AdminAsset;
 use common\components\enums\UsersRoleEnum;
+use common\widgets\Alert;
 use yii\helpers\Html;
 use yii\web\View;
 
@@ -47,6 +48,12 @@ $theme = AdminAsset::register($this);
                         $this->context->action->id != "error") : ?>
                     <?= $this->render("blocks/_breadcrumbs") ?>
                 <?php endif; ?>
+
+                <?= Alert::widget([
+                    'options' => [
+                        'class' => 'show'
+                    ]
+                ]) ?>
 
                 <main>
                     <?= $content ?>
