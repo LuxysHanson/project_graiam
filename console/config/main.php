@@ -24,9 +24,9 @@ return [
     'components' => [
         'authManager' => [
             'class' => 'common\components\PhpManager',
-            'itemFile' => '@backend/components/rbac/items.php',
-            'assignmentFile' => '@backend/components/rbac/assignments.php',
-            'ruleFile' => '@backend/components/rbac/rules.php'
+            'itemFile' => '@backend/rbac/items.php',
+            'assignmentFile' => '@backend/rbac/assignments.php',
+            'ruleFile' => '@backend/rbac/rules.php'
         ],
         'log' => [
             'targets' => [

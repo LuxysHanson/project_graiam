@@ -19,7 +19,6 @@ $this->title = Yii::t('app', "Блокировка экрана");
 
         <?php
         $fieldOptions = [
-            'errorOptions' => ['class' => 'invalid-feedback'],
             'options' => ['class' => 'form-group auth-form-group-custom mb-4'],
             'inputTemplate' => "<i class='ri-lock-2-line auti-custom-input-icon'></i>{input}"
         ]
