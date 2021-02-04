@@ -51,6 +51,11 @@ class ProfileController extends BaseController
 
         if ($model->load(Yii::$app->request->post())) {
             $image = UploadedFile::getInstance($model, 'image');
+
+            if (empty($model->image) && $profile->image) {
+                $model->image = $profile->image;
+            }
+
             if ($model->imgUpload($image) && $model->save($profile)) {
                 return $this->redirect([$template]);
             }

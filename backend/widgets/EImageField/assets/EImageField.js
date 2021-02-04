@@ -15,7 +15,7 @@ $(function () {
                 removeIcon: '<i class="fas fa-trash"></i>',
                 previewFileIcon: '<i class="fas fa-file"></i>',
                 removeTitle: 'Сбросить изменения',
-                downloadTitle: 'Download file',
+                // downloadTitle: 'Download file',
                 elErrorContainer: '#kv-avatar-errors-1',
                 msgErrorClass: 'alert alert-block alert-danger',
                 defaultPreviewContent: '<img src="'+ input.data('default') +'" alt="default-avatar-img">',

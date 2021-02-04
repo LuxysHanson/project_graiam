@@ -14,6 +14,9 @@ class ProfileForm extends Model
 {
     public $image = null;
     public $password;
+    public $last_name = null;
+    public $first_name = null;
+    public $middle_name = null;
 
     /* Временное хранение размер загружаемого фото */
     protected $image_size;
@@ -22,14 +25,19 @@ class ProfileForm extends Model
     {
         return [
             ['image', 'file', 'extensions' => ['jpeg', 'jpg', 'png']],
-            [['image'], 'required']
+            [['image'], 'required', 'when' => function () {
+                return $this->image ? false : true;
+            }]
         ];
     }
 
     public function attributeLabels()
     {
         return [
-            'image' => Yii::t('app', "Логотип администратора")
+            'image' => Yii::t('app', "Логотип администратора"),
+            'last_name' => Yii::t('app', "Фамилия"),
+            'first_name' => Yii::t('app', "Имя"),
+            'middle_name' => Yii::t('app', "Отчество")
         ];
     }
 
@@ -56,6 +64,9 @@ class ProfileForm extends Model
                 return true;
             }
         }
+
+        if ($this->image) return true;
+
         Yii::$app->session->setFlash('error', "Ошибка при загрузке фото");
         return false;
     }
