@@ -1,8 +1,9 @@
 <?php
-/* @var $this View */
-/* @var $form ActiveForm */
-
-/* @var $model LoginForm */
+/**
+ * @var $this View
+ * @var $form ActiveForm
+ * @var $model LoginForm
+ */
 
 use common\models\forms\LoginForm;
 use yii\bootstrap\ActiveForm;

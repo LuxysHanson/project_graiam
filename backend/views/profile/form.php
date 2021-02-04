@@ -1,7 +1,9 @@
 <?php
-/** @var $model ProfileForm */
-/** @var $template string */
-/** @var $_params_ string */
+/**
+ * @var $model ProfileForm
+ * @var $template string
+ * @var $_params_ string
+ */
 
 use backend\models\forms\ProfileForm;
 use yii\helpers\Url;

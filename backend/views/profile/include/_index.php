@@ -22,3 +22,15 @@ echo EImageField::widget([
     ]
 ]);
 ?>
+
+<?= $form->field($model, 'last_name')->textInput([
+    'placeholder' => Yii::t('app', "Фамилия")
+]) ?>
+
+<?= $form->field($model, 'first_name')->textInput([
+    'placeholder' => Yii::t('app', "Имя")
+]) ?>
+
+<?= $form->field($model, 'middle_name')->textInput([
+    'placeholder' => Yii::t('app', "Отчество")
+]) ?>
